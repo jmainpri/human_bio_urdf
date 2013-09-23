@@ -1,0 +1,852 @@
+<?xml version="1.0"?>
+<robot name="human_model">
+
+    <link name="base">
+        <visual>
+            <geometry>
+                <sphere radius=".02"/>
+            </geometry>      
+            <material name="">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="PelvisBody">
+        <visual>
+            <geometry>
+                <cylinder length="0.25" radius="0.1595"/>
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="PelvisDummyTransX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="PelvisTransX" type="prismatic">
+        <parent link="base"/>
+        <child link="PelvisDummyTransX"/>
+        <origin xyz="0 0 0"/> <!--Offset from PelvisBody-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+    </joint>
+
+    <link name="PelvisDummyTransY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="PelvisTransY" type="prismatic">
+        <parent link="PelvisDummyTransX"/>
+        <child link="PelvisDummyTransY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+    </joint>
+
+    <link name="PelvisDummyTransZ">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="PelvisTransZ" type="prismatic">
+        <parent link="PelvisDummyTransY"/>
+        <child link="PelvisDummyTransZ"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+    </joint>
+
+    <link name="PelvisDummyRotX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="PelvisRotX" type="revolute">
+        <parent link="PelvisDummyTransZ"/>
+        <child link="PelvisDummyRotX"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="PelvisDummyRotY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="PelvisRotY" type="revolute">
+        <parent link="PelvisDummyRotX"/>
+        <child link="PelvisDummyRotY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <joint name="PelvisRotZ" type="revolute">
+        <parent link="PelvisDummyRotY"/>
+        <child link="PelvisBody"/>
+        <origin xyz="0.037432 0 0.139749"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="torso">
+        <visual>
+            <geometry>
+                <cylinder length="0.4" radius="0.17"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.15"/>
+            <material name="">
+                <color rgba="0.8 0.0 0.01 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="TorsoDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="TorsoX" type="revolute">
+        <parent link="PelvisBody"/>
+        <child link="TorsoDummyX"/>
+        <origin xyz="0.037432 0 0.139749"/> <!--Offset from base-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="TorsoDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="TorsoY" type="revolute">
+        <parent link="TorsoDummyX"/>
+        <child link="TorsoDummyY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <joint name="TorsoZ" type="revolute">
+        <parent link="TorsoDummyY"/>
+        <child link="torso"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="head">
+        <visual>
+            <geometry>
+                <sphere radius=".13"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>      
+            <material name="">
+                <color rgba="0.901961 0.772549 0.694118 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="HeadDummyZ">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="HeadZ" type="revolute">
+        <parent link="torso"/>
+        <child link="HeadDummyZ"/>
+        <origin xyz="-0.013935 0 0.454217"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.786" upper="0.786" velocity="5"/>
+    </joint>
+
+    <link name="HeadDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="HeadY" type="revolute">
+        <parent link="HeadDummyZ"/>
+        <child link="HeadDummyY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 -1 0"/>
+        <limit effort="15" lower="-1.0472" upper="0.5236" velocity="5"/>
+    </joint>
+
+    <joint name="HeadX" type="revolute">
+        <parent link="HeadDummyY"/>
+        <child link="head"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-0.786" upper="0.786" velocity="5"/>
+    </joint>
+
+    <!-- ******************* RIGHT ARM ***************************** -->
+    <!-- *********************************************************** -->
+    <link name="rHumerus">
+        <visual>
+            <geometry>
+                <cylinder length="0.2475" radius="0.053"/>
+            </geometry>      
+            <origin rpy="1.5707963267948966 0 0" xyz="0 -0.15 0"/>
+            <material name="">
+                <color rgba="0.8 0.0 0.01 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="rShoulderDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rShoulderX" type="revolute">
+        <parent link="torso"/>
+        <child link="rShoulderDummyX"/>
+        <origin xyz="-0.048632 -0.23982 0.288822"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="rShoulderDummyZ">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rShoulderZ" type="revolute">
+        <parent link="rShoulderDummyX"/>
+        <child link="rShoulderDummyZ"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <joint name="rShoulderY" type="revolute">
+        <parent link="rShoulderDummyZ"/>
+        <child link="rHumerus"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 -1 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="rRadius">
+        <visual>
+            <geometry>
+                <cylinder length="0.281" radius="0.053"/>
+            </geometry>
+            <origin rpy="1.5707963267948966 0 0" xyz="0 -0.15 0"/>
+            <material name="">
+                <color rgba="0.901961 0.772549 0.694118 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="rElbowDummy">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rArmTrans" type="prismatic">
+        <parent link="rHumerus"/>
+        <child link="rElbowDummy"/>
+        <origin xyz="0.004167 -0.206608 0.001653"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-.5" upper=".5" velocity="5"/>
+    </joint>
+
+    <joint name="rElbowZ" type="revolute">
+        <parent link="rElbowDummy"/>
+        <child link="rRadius"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="rWristDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rWristX" type="revolute">
+        <parent link="rRadius"/>
+        <child link="rWristDummyX"/>
+        <origin xyz="0.002774 -0.250572 0.004556"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="rWristDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rWristY" type="revolute">
+        <parent link="rWristDummyX"/>
+        <child link="rWristDummyY"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-3.14" upper="0" velocity="5"/>
+    </joint>
+
+    <joint name="rWristZ" type="revolute">
+        <parent link="rWristDummyY"/>
+        <child link="rHand"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.698" upper="0.698" velocity="5"/>
+    </joint>
+
+     <link name="rHand">
+        <visual>
+            <geometry>
+                <box size="0.15 0.15 0.05" />
+                <!--<sphere radius="0.04"/>-->
+            </geometry>      
+            <origin xyz="0 -0.1 0"/>
+            <material name="">
+                <color rgba="0.901961 0.772549 0.694118 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+
+    <!-- ******************* LEFT ARM ***************************** -->
+    <!-- *********************************************************** -->
+    
+    <link name="lHumerus">
+        <visual>
+            <geometry>
+                <cylinder length="0.2475" radius="0.053"/>
+            </geometry>      
+            <origin rpy="1.5707963267948966 0 0" xyz="0 0.15 0"/>
+            <material name="">
+                <color rgba="0.8 0.0 0.01 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="lShoulderDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lShoulderX" type="revolute">
+        <parent link="torso"/>
+        <child link="lShoulderDummyX"/>
+        <origin xyz="-0.048632 0.23982 0.288822"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="lShoulderDummyZ">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lShoulderZ" type="revolute">
+        <parent link="lShoulderDummyX"/>
+        <child link="lShoulderDummyZ"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <joint name="lShoulderY" type="revolute">
+        <parent link="lShoulderDummyZ"/>
+        <child link="lHumerus"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 -1 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="lRadius">
+        <visual>
+            <geometry>
+                <cylinder length="0.281" radius="0.053"/>
+            </geometry>
+            <origin rpy="1.5707963267948966 0 0" xyz="0 0.15 0"/>
+            <material name="">
+                <color rgba="0.901961 0.772549 0.694118 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="lElbowDummy">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lArmTrans" type="prismatic">
+        <parent link="lHumerus"/>
+        <child link="lElbowDummy"/>
+        <origin xyz="0.004167 0.206608 0.001653"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-.5" upper=".5" velocity="5"/>
+    </joint>
+
+    <joint name="lElbowZ" type="revolute">
+        <parent link="lElbowDummy"/>
+        <child link="lRadius"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="lWristDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lWristX" type="revolute">
+        <parent link="lRadius"/>
+        <child link="lWristDummyX"/>
+        <origin xyz="0.002774 0.250572 0.004556"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+    </joint>
+
+    <link name="lWristDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lWristY" type="revolute">
+        <parent link="lWristDummyX"/>
+        <child link="lWristDummyY"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-3.14" upper="0" velocity="5"/>
+    </joint>
+
+    <joint name="lWristZ" type="revolute">
+        <parent link="lWristDummyY"/>
+        <child link="lHand"/>
+        <origin xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.698" upper="0.698" velocity="5"/>
+    </joint>
+
+     <link name="lHand">
+        <visual>
+            <geometry>
+                <box size="0.15 0.15 0.05" />
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0.1 0"/>
+            <material name="">
+                <color rgba="0.901961 0.772549 0.694118 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- ******************* RIGHT LEG ***************************** -->
+    <!-- *********************************************************** -->
+
+     <link name="rFemur">
+        <visual>
+            <geometry>
+                <cylinder length="0.3949" radius="0.0871"/>
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 -0.20"/>  <!-- needs a rotation -->
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="rHipDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rHipX" type="revolute">
+        <parent link="PelvisBody"/>
+        <child link="rHipDummyX"/>
+        <origin xyz="0.022487 -0.100975 -0.086017"/> <!--Offset from base wrong value-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-1.7453292519943295" upper="0.17453292519943295" velocity="5"/>
+    </joint>
+
+    <link name="rHipDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rHipY" type="revolute">
+        <parent link="rHipDummyX"/>
+        <child link="rHipDummyY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-2.6179938779914944" upper="1.0471975511965976" velocity="5"/>
+    </joint>
+
+    <joint name="rHipZ" type="revolute">
+        <parent link="rHipDummyY"/>
+        <child link="rFemur"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.6981317007977318" upper="0.6981317007977318" velocity="5"/>
+    </joint>
+
+     <link name="rTibia">
+        <visual>
+            <geometry>
+                <cylinder length="0.3498" radius="0.0685"/>
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 -0.20"/>  <!-- needs a rotation -->
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rKnee" type="revolute">
+        <parent link="rFemur"/>
+        <child link="rTibia"/>
+        <origin xyz="-0.024908 0 -0.468294"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="0" upper="2.443460952792061" velocity="5"/>
+    </joint>
+
+    <link name="rAnkleDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rAnkleX" type="revolute">
+        <parent link="rTibia"/>
+        <child link="rAnkleDummyX"/>
+        <origin xyz="-0.013991 0.005449 -0.388599"/> <!--Offset from base-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-0.3490658503988659" upper="0.3490658503988659" velocity="5"/>
+    </joint>
+
+    <link name="rAnkleDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="rAnkleY" type="revolute">
+        <parent link="rAnkleDummyX"/>
+        <child link="rAnkleDummyY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-0.5235987755982988" upper="0.5235987755982988" velocity="5"/>
+    </joint>
+
+    <joint name="rAnkleZ" type="revolute">
+        <parent link="rAnkleDummyY"/>
+        <child link="rFoot"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.6981317007977318" upper="0.6981317007977318" velocity="5"/>
+    </joint>
+
+     <link name="rFoot">
+        <visual>
+            <geometry>
+                <box size="0.1488 0.164 0.063" /> <!-- extents of the box - half width, height, length in OR-->
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 0"/>  <!-- needs a rotation -->
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- ******************* LEFT LEG ***************************** -->
+    <!-- *********************************************************** -->
+
+     <link name="lFemur">
+        <visual>
+            <geometry>
+                <cylinder length="0.3949" radius="0.0871"/>
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 -0.20"/>  <!-- needs a rotation -->
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="lHipDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lHipX" type="revolute">
+        <parent link="PelvisBody"/>
+        <child link="lHipDummyX"/>
+        <origin xyz="0.022487 0.100975 -0.086017"/> <!--Offset from base wrong value-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-1.7453292519943295" upper="0.17453292519943295" velocity="5"/>
+    </joint>
+
+    <link name="lHipDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lHipY" type="revolute">
+        <parent link="lHipDummyX"/>
+        <child link="lHipDummyY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-2.6179938779914944" upper="1.0471975511965976" velocity="5"/>
+    </joint>
+
+    <joint name="lHipZ" type="revolute">
+        <parent link="lHipDummyY"/>
+        <child link="lFemur"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.6981317007977318" upper="0.6981317007977318" velocity="5"/>
+    </joint>
+
+     <link name="lTibia">
+        <visual>
+            <geometry>
+                <cylinder length="0.3498" radius="0.0685"/>
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 -0.20"/>  <!-- needs a rotation -->
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lKnee" type="revolute">
+        <parent link="lFemur"/>
+        <child link="lTibia"/>
+        <origin xyz="-0.024908 0 -0.468294"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="0" upper="2.443460952792061" velocity="5"/>
+    </joint>
+
+    <link name="lAnkleDummyX">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lAnkleX" type="revolute">
+        <parent link="lTibia"/>
+        <child link="lAnkleDummyX"/>
+        <origin xyz="-0.013991 0 -0.388599"/> <!--Offset from base-->
+        <axis xyz="1 0 0"/>
+        <limit effort="15" lower="-0.3490658503988659" upper="0.3490658503988659" velocity="5"/>
+    </joint>
+
+    <link name="lAnkleDummyY">
+        <visual>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="invis">
+                <color rgba="0.0 0.0 0.0 0.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="lAnkleY" type="revolute">
+        <parent link="lAnkleDummyX"/>
+        <child link="lAnkleDummyY"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 1 0"/>
+        <limit effort="15" lower="-0.5235987755982988" upper="0.5235987755982988" velocity="5"/>
+    </joint>
+
+    <joint name="lAnkleZ" type="revolute">
+        <parent link="lAnkleDummyY"/>
+        <child link="lFoot"/>
+        <origin xyz="0 0 0"/> <!--Offset from base-->
+        <axis xyz="0 0 1"/>
+        <limit effort="15" lower="-0.6981317007977318" upper="0.6981317007977318" velocity="5"/>
+    </joint>
+
+     <link name="lFoot">
+        <visual>
+            <geometry>
+                <box size="0.1488 0.164 0.063" /> <!-- extents of the box - half width, height, length in OR-->
+            </geometry>      
+            <origin rpy="0 0 0" xyz="0 0 0"/>  <!-- needs a rotation -->
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+</robot>

@@ -1,2 +1,2 @@
-human-urdf
+human_urdf
 ==========

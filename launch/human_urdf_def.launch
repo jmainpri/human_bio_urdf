@@ -1,0 +1,14 @@
+<launch>
+  <arg name="gui" default="true" />
+  <arg name="output" default="screen" />
+  <arg name="model" default="$(find human_urdf)/urdf/human.urdf" />
+
+  <!-- Robot state & model -->
+  <param name="robot_description" textfile="$(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="$(arg output)">
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="$(arg output)" >
+  </node>
+
+</launch>
