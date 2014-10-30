@@ -86,6 +86,7 @@
             <geometry>
                 <sphere radius="0.02"/>
             </geometry>
+            <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
             <material name="invis">
                 <color rgba="0.0 0.0 0.0 0.0"/>
             </material>
@@ -699,21 +700,21 @@
         <child link="rTorsoDummyTransX"/>
         <origin xyz="0 0 0"/> <!--Offset from PelvisBody-->
         <axis xyz="1 0 0"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
     <joint name="rShoulderTransY" type="prismatic">
         <parent link="rTorsoDummyTransX"/>
         <child link="rTorsoDummyTransY"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
         <axis xyz="0 1 0"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
     <joint name="rShoulderTransZ" type="prismatic">
         <parent link="rTorsoDummyTransY"/>
         <child link="rTorsoDummyTransZ"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
         <axis xyz="0 0 1"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
 
     <joint name="lShoulderTransX" type="prismatic">
@@ -721,21 +722,21 @@
         <child link="lTorsoDummyTransX"/>
         <origin xyz="0 0 0"/> <!--Offset from PelvisBody-->
         <axis xyz="1 0 0"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
     <joint name="lShoulderTransY" type="prismatic">
         <parent link="lTorsoDummyTransX"/>
         <child link="lTorsoDummyTransY"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
         <axis xyz="0 1 0"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
     <joint name="lShoulderTransZ" type="prismatic">
         <parent link="lTorsoDummyTransY"/>
         <child link="lTorsoDummyTransZ"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
         <axis xyz="0 0 1"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
 
     <joint name="TorsoTrans" type="prismatic">
@@ -743,7 +744,7 @@
         <child link="torso"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
         <axis xyz="0 0 1"/>
-        <limit effort="15" lower="-30" upper="30" velocity="5"/>
+        <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
 
     <joint name="HeadZ" type="revolute">
@@ -820,7 +821,7 @@
         <child link="rRadius"/>
         <origin xyz="0 0 0"/>
         <axis xyz="0 1 0"/>
-        <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
+        <limit effort="15" lower="-.5" upper=".5" velocity="5"/>
     </joint>
 
     <joint name="rForeArmTrans" type="prismatic">
