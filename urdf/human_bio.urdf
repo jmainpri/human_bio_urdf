@@ -69,7 +69,7 @@
     <link name="PelvisBody">
         <visual>
             <geometry>
-                <cylinder length="0.25" radius="0.1595"/>
+                <cylinder length="0.22" radius="0.14"/>
             </geometry>      
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <material name="">
@@ -264,9 +264,9 @@
     <link name="rHumerus">
         <visual>
             <geometry>
-                <cylinder length="0.2475" radius="0.045"/>
+                <cylinder length="0.3475" radius="0.053"/>
             </geometry>      
-            <origin rpy="1.5707963267948966 0 0" xyz="0 -0.15 0"/>
+            <origin rpy="1.5707963267948966 0 0" xyz="0 -0.18 0"/>
             <material name="">
                 <color rgba="0.8 0.0 0.01 1.0"/>
             </material>
@@ -306,9 +306,9 @@
     <link name="rRadius">
         <visual>
             <geometry>
-                <cylinder length="0.281" radius="0.04"/>
+                <cylinder length="0.31" radius="0.04"/>
             </geometry>
-            <origin rpy="1.5707963267948966 0 0" xyz="0 -0.15 0"/>
+            <origin rpy="1.5707963267948966 0 0" xyz="0 -0.12 0"/>
             <material name="">
                 <color rgba="0.901961 0.772549 0.694118 1.0"/>
             </material>
@@ -351,7 +351,7 @@
                 <box size="0.07 0.10 .025" />
                 <!--<sphere radius="0.04"/>-->
             </geometry>      
-            <origin xyz="0 -0.1 0"/>
+            <origin rpy="0 1.5707963267948966 0" xyz="0 -0.07 0"/>
             <material name="">
                 <color rgba="0.901961 0.772549 0.694118 1.0"/>
             </material>
@@ -684,14 +684,14 @@
         <parent link="TorsoDummyX"/>
         <child link="TorsoDummyY"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
-        <axis xyz="0 0 1"/>
+        <axis xyz="0 1 0"/>
         <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
     </joint>
     <joint name="TorsoY" type="revolute">
         <parent link="TorsoDummyY"/>
         <child link="TorsoDummyZ"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 0 1"/>
         <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
     </joint>
 
@@ -706,14 +706,14 @@
         <parent link="rTorsoDummyTransX"/>
         <child link="rTorsoDummyTransY"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 0 1"/>
         <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
     <joint name="rShoulderTransZ" type="prismatic">
         <parent link="rTorsoDummyTransY"/>
         <child link="rTorsoDummyTransZ"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
-        <axis xyz="0 0 1"/>
+        <axis xyz="0 -1 0"/>
         <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
 
@@ -775,7 +775,7 @@
     <joint name="rShoulderY1" type="revolute">
         <parent link="rTorsoDummyTransZ"/>
         <child link="rShoulderDummyX"/>
-        <origin xyz="0 0 0"/>
+        <origin xyz="0 0 0" rpy="1.570796326 0 0"/>
         <axis xyz="0 1 0"/>
         <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
     </joint>
@@ -844,9 +844,8 @@
         <child link="rWristDummy3"/>
         <origin xyz="0 0 0"/>
         <axis xyz="1 0 0"/>
-        <limit effort="15" lower="-3.14" upper="0" velocity="5"/>
+        <limit effort="15" lower="-3.14" upper="3.15" velocity="5"/>
     </joint>
-
     <joint name="rWristY" type="revolute">
         <parent link="rWristDummy3"/>
         <child link="rHand"/>

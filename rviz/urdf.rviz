@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1
+        - /TF1
       Splitter Ratio: 0.5
     Tree Height: 893
   - Class: rviz/Selection
@@ -48,7 +50,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
+    - Alpha: 0.6
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -330,22 +332,186 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
-      Marker Scale: 1
+        HeadDummyY:
+          Value: true
+        HeadDummyZ:
+          Value: true
+        PelvisBody:
+          Value: true
+        PelvisDummyRotX:
+          Value: true
+        PelvisDummyRotY:
+          Value: true
+        PelvisDummyTransX:
+          Value: true
+        PelvisDummyTransY:
+          Value: true
+        PelvisDummyTransZ:
+          Value: true
+        TorsoDummyX:
+          Value: true
+        TorsoDummyY:
+          Value: true
+        TorsoDummyZ:
+          Value: true
+        base:
+          Value: true
+        head:
+          Value: true
+        lAnkleDummyX:
+          Value: true
+        lAnkleDummyY:
+          Value: true
+        lElbowDummy:
+          Value: true
+        lFemur:
+          Value: true
+        lFoot:
+          Value: true
+        lHand:
+          Value: true
+        lHipDummyX:
+          Value: true
+        lHipDummyY:
+          Value: true
+        lHumerus:
+          Value: true
+        lRadius:
+          Value: true
+        lShoulderDummyX:
+          Value: true
+        lShoulderDummyZ:
+          Value: true
+        lTibia:
+          Value: true
+        lTorsoDummyTransX:
+          Value: true
+        lTorsoDummyTransY:
+          Value: true
+        lTorsoDummyTransZ:
+          Value: true
+        lWristDummyX:
+          Value: true
+        lWristDummyY:
+          Value: true
+        rAnkleDummyX:
+          Value: true
+        rAnkleDummyY:
+          Value: true
+        rElbowDummy1:
+          Value: true
+        rElbowDummy2:
+          Value: true
+        rElbowDummy3:
+          Value: true
+        rFemur:
+          Value: true
+        rFoot:
+          Value: true
+        rHand:
+          Value: true
+        rHipDummyX:
+          Value: true
+        rHipDummyY:
+          Value: true
+        rHumerus:
+          Value: true
+        rRadius:
+          Value: true
+        rShoulderDummyX:
+          Value: true
+        rShoulderDummyY:
+          Value: true
+        rTibia:
+          Value: true
+        rTorsoDummyTransX:
+          Value: true
+        rTorsoDummyTransY:
+          Value: true
+        rTorsoDummyTransZ:
+          Value: true
+        rWristDummy1:
+          Value: true
+        rWristDummy2:
+          Value: true
+        rWristDummy3:
+          Value: true
+        torso:
+          Value: true
+      Marker Scale: 0.25
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        base:
+          PelvisDummyTransX:
+            PelvisDummyTransY:
+              PelvisDummyTransZ:
+                PelvisDummyRotX:
+                  PelvisDummyRotY:
+                    PelvisBody:
+                      TorsoDummyX:
+                        TorsoDummyY:
+                          TorsoDummyZ:
+                            lTorsoDummyTransX:
+                              lTorsoDummyTransY:
+                                lTorsoDummyTransZ:
+                                  {}
+                            rTorsoDummyTransX:
+                              rTorsoDummyTransY:
+                                rTorsoDummyTransZ:
+                                  rShoulderDummyX:
+                                    rShoulderDummyY:
+                                      rHumerus:
+                                        rElbowDummy1:
+                                          rElbowDummy2:
+                                            rElbowDummy3:
+                                              rRadius:
+                                                rWristDummy1:
+                                                  rWristDummy2:
+                                                    rWristDummy3:
+                                                      rHand:
+                                                        {}
+                            torso:
+                              HeadDummyZ:
+                                HeadDummyY:
+                                  head:
+                                    {}
+                              lShoulderDummyX:
+                                lShoulderDummyZ:
+                                  lHumerus:
+                                    lElbowDummy:
+                                      lRadius:
+                                        lWristDummyX:
+                                          lWristDummyY:
+                                            lHand:
+                                              {}
+                      lHipDummyX:
+                        lHipDummyY:
+                          lFemur:
+                            lTibia:
+                              lAnkleDummyX:
+                                lAnkleDummyY:
+                                  lFoot:
+                                    {}
+                      rHipDummyX:
+                        rHipDummyY:
+                          rFemur:
+                            rTibia:
+                              rAnkleDummyX:
+                                rAnkleDummyY:
+                                  rFoot:
+                                    {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 0; 0; 0
     Fixed Frame: base
     Frame Rate: 30
   Name: root
@@ -367,22 +533,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.13547
+      Distance: 2.26234
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.0558911
-        Y: 0.00292588
-        Z: 0.0820035
+        X: 0.125285
+        Y: 0.0577975
+        Z: 0.0600389
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.640399
+      Pitch: 0.334798
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.27356
+      Yaw: 0.335442
     Saved: ~
 Window Geometry:
   Displays:
@@ -400,5 +566,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1803
-  X: 3222
+  X: 3234
   Y: 14
