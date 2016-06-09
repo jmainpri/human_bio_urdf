@@ -1,7 +1,7 @@
 <launch>
   <arg name="gui" default="true" />
   <arg name="output" default="screen" />
-  <arg name="model" default="$(find human_urdf)/urdf/human.urdf" />
+  <arg name="model" default="$(find human_bio_urdf)/urdf/human.urdf" />
 
   <!-- Robot state & model -->
   <param name="robot_description" textfile="$(arg model)" />

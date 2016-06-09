@@ -1,11 +1,11 @@
 <launch>
 
   <arg name="output" default="screen" />
-  <arg name="model" default="$(find human_urdf)/urdf/human.urdf" />
+  <arg name="model" default="$(find human_bio_urdf)/urdf/human.urdf" />
 
   <!-- Robot state & model -->
   <param name="robot_description" textfile="$(arg model)" />
-  <node name="joint_state_publisher" pkg="human_urdf" type="human_joint_state_publisher.py" output="$(arg output)">
+  <node name="joint_state_publisher" pkg="human_bio_urdf" type="human_joint_state_publisher.py" output="$(arg output)">
   </node>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="$(arg output)" >
   </node>

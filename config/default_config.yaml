@@ -1,0 +1,68 @@
+zeros:
+  rShoulderTransX: .0
+  rShoulderTransY: -0.21
+  rShoulderTransZ: .29
+  rArmTrans: .24
+  rForeArmTrans: .24
+  rShoulderX: 1.43
+  lShoulderX: -1.43
+
+  # This from MOVE3D
+  # rShoulderTransX: .18
+  # rShoulderTransY: .33
+  # rShoulderTransZ: .25
+  # rArmTrans: .39
+  # rForeArmTrans: .24
+
+  # PelvisTransX:
+  # PelvisTransY:
+  # PelvisTransZ:
+  # PelvisRotX:
+  # PelvisRotY:
+  # PelvisRotZ:
+  # TorsoX:
+  # TorsoZ:
+  # TorsoY:
+  # rShoulderTransX:
+  # rShoulderTransY:
+  # rShoulderTransZ:
+  # lShoulderTransX:
+  # lShoulderTransY:
+  # lShoulderTransZ:
+  # TorsoTrans:
+  # HeadZ:
+  # HeadY:
+  # HeadX:
+  # rShoulderY1:
+  # rShoulderX:
+  # rShoulderY2:
+  # rArmTrans:
+  # rElbowZ:
+  # rElbowX:
+  # rElbowY:
+  # rForeArmTrans:
+  # rWristZ:
+  # rWristX:
+  # rWristY:
+  # lShoulderX:
+  # lShoulderZ:
+  # lShoulderY:
+  # lArmTrans:
+  # lElbowZ:
+  # lWristX:
+  # lWristY:
+  # lWristZ:
+  # rHipX:
+  # rHipY:
+  # rHipZ:
+  # rKnee:
+  # rAnkleX:
+  # rAnkleY:
+  # rAnkleZ:
+  # lHipX:
+  # lHipY:
+  # lHipZ:
+  # lKnee:
+  # lAnkleX:
+  # lAnkleY:
+  # lAnkleZ:

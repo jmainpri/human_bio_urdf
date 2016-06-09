@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>human_urdf</name>
+  <name>human_bio_urdf</name>
   <version>0.0.0</version>
   <description>The human_urdf package</description>
   <maintainer email="rhhayne@wpi.edu">Rafi Hayne</maintainer>
