@@ -4,7 +4,14 @@ project(human_bio_urdf)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS message_generation roscpp rospy sensor_msgs std_msgs)
+find_package(catkin REQUIRED COMPONENTS 
+message_generation 
+roscpp 
+rospy 
+sensor_msgs 
+std_msgs
+joint_state_publisher
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -34,11 +41,11 @@ catkin_python_setup()
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  sensor_msgs
-  std_msgs
-)
+#generate_messages(
+#  DEPENDENCIES
+#  sensor_msgs
+#  std_msgs
+#)
 
 ###################################
 ## catkin specific configuration ##
@@ -52,8 +59,15 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES human_urdf
-  CATKIN_DEPENDS message_runtime roscpp rospy sensor_msgs std_msgs
-  DEPENDS system_lib
+  CATKIN_DEPENDS 
+  message_runtime 
+  roscpp 
+  rospy 
+  sensor_msgs 
+  std_msgs
+  joint_state_publisher
+  DEPENDS 
+  system_lib
 )
 
 ###########
