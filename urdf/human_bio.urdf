@@ -668,7 +668,7 @@
     <joint name="PelvisRotZ" type="revolute">
         <parent link="PelvisDummyRotY"/>
         <child link="PelvisBody"/>
-        <origin xyz="0.037432 0 0.139749"/> <!--Offset from base-->
+        <origin xyz="0 0 0"/>
         <axis xyz="0 0 1"/>
         <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
     </joint>
@@ -684,7 +684,7 @@
         <parent link="TorsoDummyX"/>
         <child link="TorsoDummyY"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 -1 0"/>
         <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
     </joint>
     <joint name="TorsoY" type="revolute">

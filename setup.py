@@ -4,7 +4,7 @@ from distutils.core import setup
 from catkin_pkg.python_setup import generate_distutils_setup
 
 d = generate_distutils_setup( 
-    packages=['human_urdf'],
+    packages=['human_bio_urdf'],
     package_dir={'': 'src'}
 )
 
