@@ -739,12 +739,12 @@
         <limit effort="15" lower="-1" upper="1" velocity="5"/>
     </joint>
 
-    <joint name="TorsoTrans" type="prismatic">
+    <joint name="TorsoTrans" type="fixed">
         <parent link="TorsoDummyZ"/>
         <child link="torso"/>
         <origin xyz="0 0 0"/> <!--Offset from base-->
         <axis xyz="0 0 1"/>
-        <limit effort="15" lower="-1" upper="1" velocity="5"/>
+        <!-- <limit effort="15" lower="-1" upper="1" velocity="5"/> -->
     </joint>
 
     <joint name="HeadZ" type="revolute">
@@ -860,7 +860,7 @@
     <joint name="lShoulderX" type="revolute">
         <parent link="torso"/>
         <child link="lShoulderDummyX"/>
-        <origin xyz="-0.048632 0.23982 0.288822"/>
+        <origin xyz="-0.048632 0.23982 0.288822" rpy="-1.570796326 0 0"/>
         <axis xyz="1 0 0"/>
         <limit effort="15" lower="-3.15" upper="3.15" velocity="5"/>
     </joint>

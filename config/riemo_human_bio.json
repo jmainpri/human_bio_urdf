@@ -1,0 +1,293 @@
+// Command line comment stripping and printing of json file:
+//   jq . <<< `cat riemo_robot.json | ./jsmin`
+// jsmin can be found here: https://github.com/douglascrockford/JSMin
+
+{
+  "apiVersion": 1.0,
+
+  // Collection of generlized coordinates. These coordinates define the
+  // dimensions of the optimization. The rules for mapping them to active dofs of
+  // the underlying model are given below.
+  "configurationSpace": {
+    "generalizedCoordinates": [
+      "PelvisTransX",
+      "PelvisTransY",
+      "PelvisTransZ",
+      "PelvisRotX",
+      "PelvisRotY",
+      "PelvisRotZ",
+      "TorsoX",
+      "TorsoY",
+      "TorsoZ",
+      "rShoulderTransX",
+      "rShoulderTransY",
+      "rShoulderTransZ",
+      "rShoulderY1",
+      "rShoulderX",
+      "rShoulderY2",
+      "rArmTrans",
+      "rElbowZ",
+      "rElbowX",
+      "rElbowY",
+      "rForeArmTrans",
+      "rWristZ",
+      "rWristX",
+      "rWristY"
+    ],
+    "taskSpaceIdentifier": "cspace",
+    "rootLink": "base"
+  },
+
+  "defaultConfiguration": [
+    0.0,   // PelvisTransX
+    0.0,   // PelvisTransY
+    0.0,   // PelvisTransZ
+    0.0,   // PelvisRotX
+    0.0,   // PelvisRotY
+    0.0,   // PelvisRotZ
+    0.0,   // TorsoX
+    0.0,   // TorsoY
+    0.0,   // TorsoZ
+    0.018, // rShoulderTransX
+    0.33,  // rShoulderTransY
+    0.25,  // rShoulderTransZ
+    0.0,   // rShoulderY1
+    0.0,   // rShoulderX
+    0.0,   // rShoulderY2
+    0.39,  // rArmTrans
+    0.0,   // rElbowZ
+    0.0,   // rElbowX
+    0.0,   // rElbowY
+    0.24,  // rForeArmTrans
+    0.0,   // rWristZ
+    0.0,   // rWristX
+    0.0    // rWristY
+  ],
+
+  // Definitions of how generalized coordinates are mapped to corresponding
+  // active dofs of the underlying model (e.g. the URDF). Most extraction rules
+  // will simply be one-to-one mappings. However, an example of a more
+  // sophisticated mapping is the Barrett hand, which has only 4 generalized
+  // coordinates, but 8 underlying moving joints in total represented in the
+  // URDF (2 joints per finer * 3 fingers + 2 finger spread).
+  //
+  // Any constants used in the scalar and offset entries should be defined in a
+  // "constants" property. 
+  //
+  // Note that the sideAgnosticJointName is the side agnostic identifier. E.g.
+  // if the actual joint is R_SFE, the tag should just be SFE.
+  "activeDofs": {
+    "dofs": [
+      {
+        "jointName": "PelvisTransX", 
+        "extractionRule": { "generalizedCoordinateName": "PelvisTransX" }
+      },
+      {
+        "jointName": "PelvisTransY", 
+        "extractionRule": { "generalizedCoordinateName": "PelvisTransY" }
+      },
+      {
+        "jointName": "PelvisTransZ", 
+        "extractionRule": { "generalizedCoordinateName": "PelvisTransZ" }
+      },
+      {
+        "jointName": "PelvisRotX", 
+        "extractionRule": { "generalizedCoordinateName": "PelvisRotX" }
+      },
+      {
+        "jointName": "PelvisRotY", 
+        "extractionRule": { "generalizedCoordinateName": "PelvisRotY" }
+      },
+      {
+        "jointName": "PelvisRotZ", 
+        "extractionRule": { "generalizedCoordinateName": "PelvisRotZ" }
+      },
+      {
+        "jointName": "TorsoX", 
+        "extractionRule": { "generalizedCoordinateName": "TorsoX" }
+      },
+      {
+        "jointName": "TorsoY", 
+        "extractionRule": { "generalizedCoordinateName": "TorsoY" }
+      },
+      {
+        "jointName": "TorsoZ", 
+        "extractionRule": { "generalizedCoordinateName": "TorsoZ" }
+      },
+      {
+        "jointName": "rShoulderTransX", 
+        "extractionRule": { "generalizedCoordinateName": "rShoulderTransX" }
+      },
+      {
+        "jointName": "rShoulderTransY", 
+        "extractionRule": { "generalizedCoordinateName": "rShoulderTransY" }
+      },
+      {
+        "jointName": "rShoulderTransZ", 
+        "extractionRule": { "generalizedCoordinateName": "rShoulderTransZ" }
+      },
+      {
+        "jointName": "rShoulderY1", 
+        "extractionRule": { "generalizedCoordinateName": "rShoulderY1" }
+      },
+      {
+        "jointName": "rShoulderX", 
+        "extractionRule": { "generalizedCoordinateName": "rShoulderX" }
+      },
+      {
+        "jointName": "rShoulderY2", 
+        "extractionRule": { "generalizedCoordinateName": "rShoulderY2" }
+      },
+      {
+        "jointName": "rArmTrans", 
+        "extractionRule": { "generalizedCoordinateName": "rArmTrans" }
+      },
+      {
+        "jointName": "rElbowZ", 
+        "extractionRule": { "generalizedCoordinateName": "rElbowZ" }
+      },
+      {
+        "jointName": "rElbowX", 
+        "extractionRule": { "generalizedCoordinateName": "rElbowX" }
+      },
+      {
+        "jointName": "rElbowY", 
+        "extractionRule": { "generalizedCoordinateName": "rElbowY" }
+      },
+      {
+        "jointName": "rForeArmTrans", 
+        "extractionRule": { "generalizedCoordinateName": "rForeArmTrans" }
+      },
+      {
+        "jointName": "rWristZ", 
+        "extractionRule": { "generalizedCoordinateName": "rWristZ" }
+      },
+      {
+        "jointName": "rWristX", 
+        "extractionRule": { "generalizedCoordinateName": "rWristX" }
+      },
+      {
+        "jointName": "rWristY", 
+        "extractionRule": { "generalizedCoordinateName": "rWristY" }
+      }
+    ]
+  },
+
+  // Define kinematic task spaces as a link name with (optionally) a
+  // corresponding semantic name name with (optionally) a corresponding
+  // semantic name. The semantic names are useful when there's a semantic
+  // difference between the name of the link (or segment) and the name of the
+  // link's origin.  For instance, the origin of the forearm is typically known
+  // an the "elbow", but the name of the link (segment) is (correctly) called
+  // the "forearm".
+  //
+  // Each kinematic task space has a corresponding axis task space. The axis
+  // task space has an implicit name of <task_space>_axis. For instance, the
+  // elbow's axis task space name is ELBOW_axis.
+  "kinematicTaskSpaces": [
+    // The rest just need to be linear combinations of these guys.
+    {
+      "semanticName": "rRadius",
+      "linkName": "rRadius"
+    },
+    {
+      "semanticName": "rHand",
+      "linkName": "rHand",
+      "useFullFrame": true
+    }
+  ],
+
+  // A composite task map is a weighted combination of the other task maps.
+  // End-effector entries below can reference both raw task maps (listed above)
+  // or composite task maps (listed here). Currently the rules are only allowed
+  // to reference base-line kinematic task maps (by their semantic name listed
+  // above), and the name of the composite task map must be unique since all
+  // task maps will be accessed equally by (semantic) name. 
+  "compositeTaskMaps": [
+    {
+      "name": "rForearmMidpoint",
+      "operator": {
+        "type": "average",
+        "rules": [
+          {
+            "task_map": "rRadius",
+            "weight": 0.5
+          },
+          {
+            "task_map": "rHand",
+            "weight": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "rEndEffector",
+      "operator": {
+        "type": "sum",
+        "rules": [
+          {
+            "task_map": "rHand",
+            "weight": 1.0
+          },
+          {
+            "task_map": "rHand_y",
+            "weight": -0.08
+          }
+        ]
+      }
+    },
+    {
+      "name": "rEndEffectorApproachAxis",
+      "operator": {
+        "type": "sum",
+        "rules": [
+          {
+            "task_map": "rHand_y",
+            "weight": -1.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "rEndEffectorOrientationAxis",
+      "operator": {
+        "type": "sum",
+        "rules": [
+          {
+            "task_map": "rHand_z",
+            "weight": -1.0
+          }
+        ]
+      }
+    }
+  ],
+
+  "endEffectorCollection": {
+    "basicEndEffectors": [
+      "rHand"
+    ],
+    "canonicalEndEffector": "rEndEffector",
+    "canonicalEndEffectorAxis": "rEndEffectorOrientationAxis",
+    "approachAxis": "rEndEffectorApproachAxis"
+  },
+
+  // Note the forearm length is about .24m.
+  "primitiveDecomposition": [
+    {
+      "keyPoints": [ "rRadius" ],
+      "radius": 0.10
+    },
+    {
+      "keyPoints": [ "rForearmMidpoint" ],
+      "radius": 0.10
+    },
+    {
+      "keyPoints": [ "rHand" ],
+      "radius": 0.05
+    },
+    {
+      "keyPoints": [ "rEndEffector" ],
+      "radius": 0.05
+    }
+  ]
+}

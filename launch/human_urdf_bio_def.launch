@@ -1,5 +1,5 @@
 <launch>
-  <arg name="gui" default="true" />
+  <arg name="gui" default="false" />
   <arg name="output" default="screen" />
   <arg name="model" default="$(find human_bio_urdf)/urdf/human_bio.urdf" />
 

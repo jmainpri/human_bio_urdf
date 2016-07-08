@@ -1,5 +1,7 @@
 <launch>
-	<include file="$(find human_bio_urdf)/launch/human_urdf_bio_def.launch" />
+	<include file="$(find human_bio_urdf)/launch/human_urdf_bio_def.launch">
+		 <arg name="gui" default="true" />
+	</include>
     <node name="rviz" pkg="rviz" type="rviz" 
     	args="-d $(find human_bio_urdf)/rviz/urdf.rviz" />
 </launch>
